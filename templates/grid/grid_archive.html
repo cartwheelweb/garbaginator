@@ -1,0 +1,16 @@
+{% extends "grid/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Grids{% endblock %}
+
+{% block body %}
+
+    <h1>Grids</h1>
+    
+    <div id="grid-listing">
+    {% for grid in latest %}
+        {% include "grid/snippets/grid.html" %}
+    {% endfor %}
+    </div>
+{% endblock %}

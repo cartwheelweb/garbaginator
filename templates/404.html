@@ -1,0 +1,14 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load flatblock_tags %}
+
+{% block head_title %}{% trans "Not Found" %}{% endblock %}
+
+{% block body %}
+    <div id="error-404">
+        <img src="{{ STATIC_URL }}img/logo_501x316.png" />
+        {% flatblock 'error.404' %}
+    </div>
+    
+{% endblock %}

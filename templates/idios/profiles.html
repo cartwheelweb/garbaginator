@@ -1,0 +1,70 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load account_tags %}
+{% load pagination_tags %}
+{% load sorting_tags %}
+
+{% block head_title %}{% trans "All Profiles" %}{% endblock %}
+
+{% block body %}
+
+<h1>{% trans "All Profiles" %}</h1>
+
+<p>Click table headers to sort</p>
+
+{% autosort users %}
+{% autopaginate users %}
+{% paginate %}
+
+    <table id="home-packages">
+        
+        {{ request.user.admin }}
+
+        <thead>
+        <tr>
+            <th>{% anchor username User Name %}</th>
+            <th>{% anchor date_joined Date Joined %}</th>
+            <th>{% anchor is_staff Staff %}</th>
+            {% if request.user.is_staff %}            
+                <th>Active</th>            
+            {% endif %}
+            <th>Github</th>
+            <th>BitBucket</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{{ user.get_absolute_url }}">{% user_display user %}</a></td>
+                    <td><span class="hide">{{ user.date_joined|date:"YmdHis" }}</span>{{ user.date_joined|timesince }}</td>
+                    <td>
+                        {% if user.is_staff %}
+                            <img src="{{ STATIC_URL }}img/icon-yes.gif" />                            
+                        {% else %}
+                            <img src="{{ STATIC_URL }}img/icon-no.gif" />                            
+                        {% endif %}                        
+                    </td>
+                    {% if request.user.is_staff %}
+                        <td>
+                            {% if user.is_active %}
+                                <img src="{{ STATIC_URL }}img/icon-yes.gif" />                            
+                            {% else %}
+                                <img src="{{ STATIC_URL }}img/icon-no.gif" />                            
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                    <td><a href="https://github.com/{{ user.get_profile.github_url|default:"" }}">{{ user.get_profile.github_url|default:"" }}</a</td>
+                    <td><a href="https://bitbucket.org/{{ user.get_profile.bitbucket_url|default:"" }}">{{ user.get_profile.bitbucket_url|default:"" }}</a</td>                                
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% paginate %}
+
+{% endblock %}
+
+{% block extra_body %}    
+{% endblock %}
