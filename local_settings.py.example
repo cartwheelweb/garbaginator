@@ -34,7 +34,7 @@ logging.basicConfig(
 
 LOCAL_INSTALLED_APPS = []
 
-ROOT_URLCONF = "packaginator.urls"
+ROOT_URLCONF = "garbaginator.urls"
 
 LAUNCHPAD_ACTIVE = False
 
