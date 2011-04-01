@@ -24,4 +24,4 @@ The most current example is live and functional at http://garbaginator.cartwheel
 Credits
 =======
 
-For IJK 2011, the garbaginator framework came out over deep discussions involving Sake.
+For IJD 2011, the garbaginator framework came out over deep discussions involving Sake.
