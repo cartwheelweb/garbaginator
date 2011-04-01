@@ -16,6 +16,7 @@ Direct Contributors
 * Consulting Cat
 * Entrepreneur Lion
 * Joe Developer
+* Scope Creep
 
 Other Contributors
 ==================
